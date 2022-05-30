@@ -1,8 +1,4 @@
-/**
- * 后端数据模型定义
- */
-
-export interface EntryUser {
+export interface IEntryUser {
   id: number;
   username: string;
   nick?: string;

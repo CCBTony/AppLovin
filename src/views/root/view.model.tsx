@@ -1,27 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
-// import { appModel } from '@/store';
 import { getUser } from '@/services';
-import { EntryUser } from '@/services/entries';
-import { makeAutoObservable, runInAction } from 'mobx';
-
-class Model {
-  user?: EntryUser = null;
-  count = 1;
-
-  constructor() {
-    makeAutoObservable(this);
-  }
-}
+import di from '@/inversify.config';
+import { IModelApp } from '@/types/models';
+import { REFS } from '@/types';
 
 const useViewModel = () => {
-  const [model] = useState(new Model());
+  const [model] = useState(di.get<IModelApp>(REFS.AppModel));
 
   const onClick = useCallback(async () => {
     const user = (await getUser({})).data;
-    runInAction(() => {
-      model.user = user;
-      model.count += 1;
-    });
+    model.setUser(user);
+    model.increase();
   }, [model]);
 
   useEffect(() => {

@@ -1,17 +1,20 @@
 import { makeAutoObservable } from 'mobx';
 import { EventEmitter } from 'events';
-import { EntryUser } from '@/services/entries';
+import { IEntryUser } from '@/types/entries';
+import { IModelApp } from '@/types/models';
+import { injectable } from 'inversify';
 
-export class AppModel {
+@injectable()
+export class AppModel implements IModelApp {
   count = 1;
   eventHub = new EventEmitter();
-  user?: EntryUser = null;
+  user?: IEntryUser = null;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  setUser(user: EntryUser) {
+  setUser(user: IEntryUser) {
     this.user = user;
   }
 
