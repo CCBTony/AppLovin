@@ -2,7 +2,7 @@ import { useLocalObservable } from 'mobx-react';
 
 export default () => {
   const model = useLocalObservable(() => ({
-    title: 'hello world',
+    title: '15, 20, hello',
   }));
   return model;
 };

@@ -5,3 +5,9 @@ export function makeNameMap<V>(specs: Array<NameMapPeer<V>>) {
     return cur;
   }, new Map<V, string>());
 }
+
+/**
+ * px => vw
+ * @param px
+ */
+export const _s = (px: number, maxWidthPx = 375) => (px / maxWidthPx) * 100 + 'vw';

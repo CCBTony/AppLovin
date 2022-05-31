@@ -5,8 +5,8 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import initHandlers from '@/globalEventHandlers';
 import { GlobalStyle } from '@/styles';
 
-import PageHome from '@/components/pages/Home';
-import PageTodayDetail from '@/components/pages/TodayDetail';
+import PageHome from '@/pages/Home';
+import PageTodayDetail from '@/pages/TodayDetail';
 
 initHandlers();
 
