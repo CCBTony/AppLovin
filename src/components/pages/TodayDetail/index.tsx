@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 
 function Tpl(): JSX.Element {
   const { title } = useViewModel();
-  return <Wrapper>{title}</Wrapper>;
+  return <Wrapper>Today Detail {title}</Wrapper>;
 }
 
 export default observer(Tpl);

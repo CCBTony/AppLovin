@@ -1,21 +1,30 @@
 import 'reflect-metadata';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import initHandlers from '@/globalEventHandlers';
-import AppRoot from '@/views/root';
+import { GlobalStyle } from '@/styles';
+
+import PageHome from '@/components/pages/Home';
+import PageTodayDetail from '@/components/pages/TodayDetail';
 
 initHandlers();
 
-function App(): JSX.Element {
-  return <AppRoot />;
-}
-
 ReactDOM.render(
   <React.StrictMode>
+    <GlobalStyle />
     <HashRouter>
       <App />
     </HashRouter>
   </React.StrictMode>,
   document.getElementById('app'),
 );
+
+function App(): JSX.Element {
+  return (
+    <Routes>
+      <Route path={'/'} element={<PageHome />} />
+      <Route path={'/today'} element={<PageTodayDetail />} />
+    </Routes>
+  );
+}
