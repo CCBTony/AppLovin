@@ -1,6 +1,6 @@
 import { Wrapper } from './styled';
 import React from 'react';
-import useViewModel from './view.model';
+import useViewModel from './model.view';
 import { observer } from 'mobx-react';
 
 function Tpl(): JSX.Element {

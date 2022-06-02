@@ -2,11 +2,13 @@ import styled, { css } from 'styled-components';
 import { HTMLProps } from 'react';
 import React from 'react';
 import classNames from 'classnames';
+import { WeatherType, ThemeType } from './meta';
 
 type Props = {
-  themeType: 'day' | 'night';
-  type: 'fine' | 'clouds' | 'wind' | 'rain' | 'snow' | 'storm';
+  themeType: ThemeType;
+  type: WeatherType;
 };
+
 const Wrapper = styled.div<Props>((props) => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const img = require(`@assets/images/${props.themeType}-${props.type}.png`);

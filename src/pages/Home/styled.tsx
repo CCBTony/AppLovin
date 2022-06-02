@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components';
 import { _s } from '@/utils';
 import TemperatureIcon from '@/components/common/TemperatureIcon';
-import wIcon from '@assets/images/w-icon.png';
+import wIcon from '@assets/images/w-icon.svg';
+import { Link } from 'react-router-dom';
 
 export const PageWrapper = styled.div`
+  overflow-x: hidden;
   position: relative;
   background: linear-gradient(180deg, #e75481 -22.84%, #929cde 113.36%);
   width: 100vw;
@@ -79,7 +81,7 @@ export const SummaryTime = styled.div`
   font-size: ${_s(14)};
   font-weight: 500;
   color: rgba(51, 40, 33, 0.5);
-  margin-top: ${_s(2)};
+  margin-top: ${_s(-9)};
 `;
 export const SummaryDataRight = styled.div`
   padding-top: ${_s(25)};
@@ -118,7 +120,7 @@ export const SummaryWeatherWrapper = styled.div`
   top: ${_s(-71)};
   left: ${_s(55)};
 `;
-export const SummaryDetailButton = styled.div`
+export const SummaryDetailButton = styled(Link)`
   width: ${_s(163)};
   height: ${_s(47)};
   display: flex;
@@ -132,6 +134,7 @@ export const SummaryDetailButton = styled.div`
   position: absolute;
   bottom: ${_s(-29)};
   left: ${_s((230 - 160) / 2)};
+  text-decoration: none;
 `;
 
 export const InfoBlock = styled.div`

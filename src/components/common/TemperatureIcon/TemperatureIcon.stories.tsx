@@ -12,7 +12,7 @@ export default {
       type: { name: 'number', required: true },
       defaultValue: 14,
       description: 'font size of temperature in px',
-      control: { type: 'range', min: 12, max: 100, step: 1 },
+      control: { type: 'range', min: 5, max: 100, step: 1 },
     },
   },
 } as ComponentMeta<typeof Cpt>;

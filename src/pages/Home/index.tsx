@@ -1,7 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import useViewModel from './view.model';
 import WeatherIcon from '@/components/common/WeatherIcon';
+import useViewModel from './model.view';
+import { WIND_LEVEL } from '@/meta';
+
 import {
   PageWrapper,
   SummaryBlock,
@@ -27,26 +29,22 @@ import {
   NavButtonLabel,
 } from './styled';
 
-import rainIcon from '@assets/images/noun-rain.png';
-import humidityIcon from '@assets/images/noun-humidity.png';
-import windIcon from '@assets/images/noun-wind.png';
-import homeIcon from '@assets/images/home-icon.png';
+import rainIcon from '@assets/images/noun-rain.svg';
+import humidityIcon from '@assets/images/noun-humidity.svg';
+import windIcon from '@assets/images/noun-wind.svg';
+import homeIcon from '@assets/images/home-icon.svg';
 
 function PageHome(): JSX.Element {
-  const { title } = useViewModel();
+  const model = useViewModel();
+
+  const {
+    appModel: { todayWeather },
+  } = model;
 
   return (
     <PageWrapper>
       <WIcon />
-      {[
-        { size: 7.98, top: 10.48, right: 72.96 },
-        { size: 5, top: 31.92, right: 140.94 },
-        { size: 11, bottom: 247, right: -5 },
-        { size: 5, bottom: 210, right: 48 },
-        { size: 4, bottom: 150, left: 57 },
-        { size: 11, bottom: 109, left: 27 },
-        { size: 5, bottom: 95, left: 94 },
-      ].map((args, idx) => (
+      {model.points.map((args, idx) => (
         <Point {...args} key={idx} />
       ))}
 
@@ -64,7 +62,7 @@ function PageHome(): JSX.Element {
             降水量
           </InfoItemLabel>
 
-          <div>6%</div>
+          <div>{todayWeather.precip} mm</div>
         </InfoItem>
 
         <InfoItem>
@@ -73,7 +71,7 @@ function PageHome(): JSX.Element {
             湿度
           </InfoItemLabel>
 
-          <div>90%</div>
+          <div>{todayWeather.humidity}</div>
         </InfoItem>
 
         <InfoItem>
@@ -82,7 +80,7 @@ function PageHome(): JSX.Element {
             风速
           </InfoItemLabel>
 
-          <div>19 km/h</div>
+          <div>{todayWeather.windSpeed} km/h</div>
         </InfoItem>
       </InfoBlock>
       <SummaryBlock>
@@ -93,21 +91,21 @@ function PageHome(): JSX.Element {
         <SummaryPosition>杭州市, 浙江省</SummaryPosition>
         <SummaryData>
           <SummaryDataLeft>
-            <SummaryTemperature fontSizeInPx={64}>15</SummaryTemperature>
+            <SummaryTemperature fontSizeInPx={64}>{todayWeather.temp}</SummaryTemperature>
             <SummaryTime>周日, 11 am</SummaryTime>
           </SummaryDataLeft>
 
           <SummaryDataRight>
             <SummaryWindLevel>
-              <span>强风</span>
+              <span>{(WIND_LEVEL as any)[todayWeather.windScale]}</span>
             </SummaryWindLevel>
             <SummaryWeather>
-              <span>多云</span>
+              <span>{todayWeather.text}</span>
             </SummaryWeather>
           </SummaryDataRight>
         </SummaryData>
 
-        <SummaryDetailButton>详情</SummaryDetailButton>
+        <SummaryDetailButton to={'/today'}>详情</SummaryDetailButton>
       </SummaryBlock>
     </PageWrapper>
   );

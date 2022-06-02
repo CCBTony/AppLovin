@@ -1,12 +1,5 @@
-type NameMapPeer<V> = [V, string];
-export function makeNameMap<V>(specs: Array<NameMapPeer<V>>) {
-  return specs.reduce((cur, [key, desc]: NameMapPeer<V>) => {
-    cur.set(key, desc);
-    return cur;
-  }, new Map<V, string>());
-}
-
 /**
+ * 将设计稿尺寸，转换为自适应尺寸
  * px => vw
  * @param px
  */

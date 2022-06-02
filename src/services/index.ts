@@ -2,20 +2,51 @@
  * 封装接口请求
  */
 
-import { IEntryUser } from '@/types/entries';
-import axios from './axios';
+import Axios from 'axios';
+import { WeatherNow, WeatherPredictionDay, WeatherPredictionHour } from '@/types/entries';
 
-import {
-  // createResource,
-  updateResource,
-  retrieveResource,
-  // deleteResource,
-  searchResources,
-} from './meta';
+const axios = Axios.create();
 
-// user
-export type updateUserParams = Partial<Omit<IEntryUser, 'username' | 'remark'>>;
-export const putUser: updateResource<updateUserParams> = (data) => axios.post('/user/put', { data });
-export const getUser: retrieveResource<IEntryUser, { id?: IEntryUser['id'] }> = (data) =>
-  axios.post('/user/get', { data });
-export const searchUser: searchResources<never, IEntryUser> = () => axios.post('/user/search');
+interface BaseQWeatherResData {
+  code: string;
+  updateTime: string;
+  fxLink: string;
+  refer: {
+    sources?: any;
+    license?: any;
+  };
+}
+type QWeatherResData<T> = BaseQWeatherResData & T;
+
+const API_KEY = 'fd1bafe058dd4392a680883bcd1290ee';
+const CURRENT_LOCATION_ID = 101210101;
+
+export const getRealtimeWeather = async (): Promise<QWeatherResData<{ now: WeatherNow }>> => {
+  const res = await axios.get('https://devapi.qweather.com/v7/weather/now', {
+    params: {
+      key: API_KEY,
+      location: CURRENT_LOCATION_ID,
+    },
+  });
+  return res.data;
+};
+
+export const get24HourPredicationWeather = async (): Promise<QWeatherResData<{ hourly: WeatherPredictionHour[] }>> => {
+  const res = await axios.get('https://devapi.qweather.com/v7/weather/24h', {
+    params: {
+      key: API_KEY,
+      location: CURRENT_LOCATION_ID,
+    },
+  });
+  return res.data;
+};
+
+export const get7DayPredicationWeather = async (): Promise<QWeatherResData<{ daily: WeatherPredictionDay[] }>> => {
+  const res = await axios.get('https://devapi.qweather.com/v7/weather/7d', {
+    params: {
+      key: API_KEY,
+      location: CURRENT_LOCATION_ID,
+    },
+  });
+  return res.data;
+};

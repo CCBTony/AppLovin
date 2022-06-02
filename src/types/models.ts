@@ -1,11 +1,10 @@
-import { EventEmitter } from 'events';
-import { IEntryUser } from '@/types/entries';
+import { WeatherNow, WeatherPredictionDay, WeatherPredictionHour } from '@/types/entries';
+import { AppStatus } from '@/meta';
 
 export interface IModelApp {
-  count: number;
-  eventHub: EventEmitter;
-  user?: IEntryUser;
+  status: AppStatus;
 
-  setUser(user: IEntryUser): void;
-  increase(): void;
+  todayWeather?: WeatherNow;
+  next24hoursWeather?: WeatherPredictionHour[];
+  next7DayWeather?: WeatherPredictionDay[];
 }

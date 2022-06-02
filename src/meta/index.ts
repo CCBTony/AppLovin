@@ -1,12 +1,20 @@
 export enum AppStatus {
-  NEW, // 新
-  INITED, // 初始化完成
+  Init,
+  Done,
 }
 
-// 全局应用事件
-export enum Event {
-  AXIOS_REQUEST_ERROR = 'axios.request.error',
-  AXIOS_RESPONSE_ERROR = 'axios.response.error',
-}
-
-export const AXIOS_BASE_URL = '/api';
+export const WIND_LEVEL = {
+  0: '无风',
+  1: '软风',
+  2: '轻风',
+  3: '微风',
+  4: '和风',
+  5: '清劲风',
+  6: '强风',
+  7: '疾风',
+  8: '大风',
+  9: '烈风',
+  10: '狂风',
+  11: '暴风',
+  12: '台风',
+};
