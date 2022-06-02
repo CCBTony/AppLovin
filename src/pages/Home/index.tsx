@@ -3,6 +3,8 @@ import { observer } from 'mobx-react';
 import WeatherIcon from '@/components/common/WeatherIcon';
 import useViewModel from './model.view';
 import { WIND_LEVEL } from '@/meta';
+import dayjs from 'dayjs';
+import * as weather from '@/utils/weather';
 
 import {
   PageWrapper,
@@ -71,7 +73,7 @@ function PageHome(): JSX.Element {
             湿度
           </InfoItemLabel>
 
-          <div>{todayWeather.humidity}</div>
+          <div>{todayWeather.humidity}%</div>
         </InfoItem>
 
         <InfoItem>
@@ -85,14 +87,16 @@ function PageHome(): JSX.Element {
       </InfoBlock>
       <SummaryBlock>
         <SummaryWeatherWrapper>
-          <WeatherIcon themeType={'day'} type={'storm'} />
+          <WeatherIcon type={weather.translateDescriptionToType(todayWeather.text)} />
         </SummaryWeatherWrapper>
 
         <SummaryPosition>杭州市, 浙江省</SummaryPosition>
         <SummaryData>
           <SummaryDataLeft>
             <SummaryTemperature fontSizeInPx={64}>{todayWeather.temp}</SummaryTemperature>
-            <SummaryTime>周日, 11 am</SummaryTime>
+            <SummaryTime>
+              {dayjs().locale('zh-cn').format('dddd').replace('星期', '周')}，{dayjs().format('h a')}
+            </SummaryTime>
           </SummaryDataLeft>
 
           <SummaryDataRight>

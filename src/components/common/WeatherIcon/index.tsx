@@ -2,10 +2,12 @@ import styled, { css } from 'styled-components';
 import { HTMLProps } from 'react';
 import React from 'react';
 import classNames from 'classnames';
-import { WeatherType, ThemeType } from './meta';
+import { WeatherType } from './meta';
+import { ThemeType } from '@/meta';
+import { appModel } from '@/store';
 
 type Props = {
-  themeType: ThemeType;
+  themeType?: ThemeType;
   type: WeatherType;
 };
 
@@ -23,5 +25,11 @@ const Wrapper = styled.div<Props>((props) => {
 
 export default (props: Props & HTMLProps<any>) => {
   const { themeType, type } = props;
-  return <Wrapper themeType={themeType} type={type} className={classNames('weather-icon', props.className)} />;
+  return (
+    <Wrapper
+      themeType={themeType ?? appModel.theme}
+      type={type}
+      className={classNames('weather-icon', props.className)}
+    />
+  );
 };

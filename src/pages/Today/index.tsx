@@ -38,12 +38,17 @@ import {
 } from './styled';
 
 function PageToday(): JSX.Element {
-  const { title } = useViewModel();
+  const {
+    app: { todayWeather },
+    chartData,
+    days,
+    todayWeatherType,
+  } = useViewModel();
 
   return (
     <PageWrapper>
       <TodayWeatherWrapper>
-        <WeatherIcon themeType={'day'} type={'snow'} />
+        <WeatherIcon type={todayWeatherType} />
       </TodayWeatherWrapper>
 
       <BackButton to={'/'} />
@@ -53,142 +58,71 @@ function PageToday(): JSX.Element {
         <div>浙江省</div>
       </PositionWrapper>
 
-      <Temperature fontSizeInPx={96}>15</Temperature>
+      <Temperature fontSizeInPx={96}>{todayWeather.temp}</Temperature>
 
       <DataBar>
         <DataItemRainChance>
           <DataItemIcon src={rainIcon} />
-          6%
+          {todayWeather.precip} mm
         </DataItemRainChance>
 
         <DataItemHumidity>
           <DataItemIcon src={humidityIcon} />
-          90%
+          {todayWeather.humidity}%
         </DataItemHumidity>
 
         <DataItemWindLevel>
           <DataItemIcon src={windIcon} />
-          19 km/h
+          {todayWeather.windSpeed} km/h
         </DataItemWindLevel>
       </DataBar>
 
       <ChartTitle>Today</ChartTitle>
       <ChartContainer>
         <ChartWrapper>
-          <PredicationChart
-            data={[
-              { name: '10 am', val: 10 },
-              { name: '11 am', val: 20 },
-              { name: '12 am', val: 15 },
-              { name: '10 am', val: 10 },
-              { name: '11 am', val: 20 },
-              { name: '12 am', val: 0 },
-              { name: '10 am', val: 10 },
-              { name: '11 am', val: 20 },
-              { name: '12 am', val: 0 },
-              { name: '10 am', val: 10 },
-              { name: '11 am', val: 20 },
-              { name: '12 am', val: 0 },
-              { name: '10 am', val: 10 },
-              { name: '11 am', val: 20 },
-              { name: '12 am', val: 0 },
-              { name: '10 am', val: 10 },
-              { name: '11 am', val: 20 },
-              { name: '12 am', val: 0 },
-            ]}
-          />
+          <PredicationChart data={chartData} />
         </ChartWrapper>
       </ChartContainer>
 
       <RecentTemperatureBlock>
         <RecentTemperatureCardWrapper>
           <RecentTemperatureCard>
-            <CardTemperature fontSizeInPx={36}>12</CardTemperature>
-            <TimeLabel>10 am</TimeLabel>
+            <CardTemperature fontSizeInPx={36}>{chartData[0].val}</CardTemperature>
+            <TimeLabel>{chartData[0].name}</TimeLabel>
           </RecentTemperatureCard>
         </RecentTemperatureCardWrapper>
 
         <RecentTemperatureCardWrapper>
           <RecentTemperatureCard>
-            <CardTemperature fontSizeInPx={36}>12</CardTemperature>
-            <TimeLabel>10 am</TimeLabel>
+            <CardTemperature fontSizeInPx={36}>{chartData[1].val}</CardTemperature>
+            <TimeLabel>{chartData[1].name}</TimeLabel>
           </RecentTemperatureCard>
         </RecentTemperatureCardWrapper>
 
         <RecentTemperatureCardWrapper>
           <HeightLightMark />
           <RecentTemperatureCard>
-            <CardTemperature fontSizeInPx={36}>12</CardTemperature>
-            <TimeLabel>10 am</TimeLabel>
+            <CardTemperature fontSizeInPx={36}>{chartData[2].val}</CardTemperature>
+            <TimeLabel>{chartData[2].name}</TimeLabel>
           </RecentTemperatureCard>
         </RecentTemperatureCardWrapper>
       </RecentTemperatureBlock>
 
       <PredictionBlock>
-        <PredictionItem>
-          <PredictionTime>周一</PredictionTime>
+        {days.map(({ day, weather, max, min }, idx) => (
+          <PredictionItem key={idx}>
+            <PredictionTime>{day}</PredictionTime>
 
-          <PredictionWeatherIcon>
-            <WeatherIcon themeType={'night'} type={'clouds'} />
-          </PredictionWeatherIcon>
+            <PredictionWeatherIcon>
+              <WeatherIcon type={weather} />
+            </PredictionWeatherIcon>
 
-          <PredictionTemperatureRange>
-            <MinTemperature fontSizeInPx={18}>10</MinTemperature>
-            <PredictionTemperature fontSizeInPx={18}>12</PredictionTemperature>
-          </PredictionTemperatureRange>
-        </PredictionItem>
-
-        <PredictionItem>
-          <PredictionTime>周2</PredictionTime>
-
-          <PredictionWeatherIcon>
-            <WeatherIcon themeType={'day'} type={'clouds'} />
-          </PredictionWeatherIcon>
-
-          <PredictionTemperatureRange>
-            <MinTemperature fontSizeInPx={18}>10</MinTemperature>
-            <PredictionTemperature fontSizeInPx={18}>12</PredictionTemperature>
-          </PredictionTemperatureRange>
-        </PredictionItem>
-
-        <PredictionItem>
-          <PredictionTime>周一</PredictionTime>
-
-          <PredictionWeatherIcon>
-            <WeatherIcon themeType={'night'} type={'clouds'} />
-          </PredictionWeatherIcon>
-
-          <PredictionTemperatureRange>
-            <MinTemperature fontSizeInPx={18}>10</MinTemperature>
-            <PredictionTemperature fontSizeInPx={18}>12</PredictionTemperature>
-          </PredictionTemperatureRange>
-        </PredictionItem>
-
-        <PredictionItem>
-          <PredictionTime>周一</PredictionTime>
-
-          <PredictionWeatherIcon>
-            <WeatherIcon themeType={'night'} type={'clouds'} />
-          </PredictionWeatherIcon>
-
-          <PredictionTemperatureRange>
-            <MinTemperature fontSizeInPx={18}>10</MinTemperature>
-            <PredictionTemperature fontSizeInPx={18}>12</PredictionTemperature>
-          </PredictionTemperatureRange>
-        </PredictionItem>
-
-        <PredictionItem>
-          <PredictionTime>周一</PredictionTime>
-
-          <PredictionWeatherIcon>
-            <WeatherIcon themeType={'night'} type={'clouds'} />
-          </PredictionWeatherIcon>
-
-          <PredictionTemperatureRange>
-            <MinTemperature fontSizeInPx={18}>10</MinTemperature>
-            <PredictionTemperature fontSizeInPx={18}>12</PredictionTemperature>
-          </PredictionTemperatureRange>
-        </PredictionItem>
+            <PredictionTemperatureRange>
+              <MinTemperature fontSizeInPx={18}>{min}</MinTemperature>
+              <PredictionTemperature fontSizeInPx={18}>{max}</PredictionTemperature>
+            </PredictionTemperatureRange>
+          </PredictionItem>
+        ))}
       </PredictionBlock>
     </PageWrapper>
   );

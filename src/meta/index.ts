@@ -1,3 +1,5 @@
+export type ThemeType = 'day' | 'night';
+
 export enum AppStatus {
   Init,
   Done,

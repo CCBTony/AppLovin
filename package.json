@@ -20,6 +20,7 @@
     "ahooks": "^3.4.0",
     "axios": "^0.24.0",
     "classnames": "^2.3.1",
+    "dayjs": "^1.11.2",
     "event": "^1.0.0",
     "inversify": "^6.0.1",
     "mobx": "^6.3.7",

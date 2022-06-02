@@ -5,6 +5,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from '@/styles';
 import { appModel } from '@/store';
 import { observer, useLocalObservable } from 'mobx-react';
+import 'dayjs/locale/zh-cn';
 
 import PageHome from '@/pages/Home';
 import PageTodayDetail from '@/pages/Today';

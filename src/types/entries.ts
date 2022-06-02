@@ -16,8 +16,14 @@ export interface WeatherNow {
   dew?: string;
 }
 
-export type WeatherPredictionHour = Omit<WeatherNow, 'feelsLike'> & {
+export type WeatherPredictionHour = Omit<WeatherNow, 'feelsLike' | 'obsTime'> & {
+  fxTime: string;
   pop?: string;
 };
 
-export type WeatherPredictionDay = { fxDate: string; tempMax: string; tempMin: string };
+export type WeatherPredictionDay = {
+  fxDate: string;
+  tempMax: string;
+  tempMin: string;
+  textDay: string;
+};
