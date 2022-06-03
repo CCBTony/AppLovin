@@ -8,7 +8,7 @@
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
           navigator.serviceWorker
-            .register('/serviceWorker.js', { scope: '/' })
+            .register('./serviceWorker.js', { scope: './' })
             .then(function (registration) {
               console.log('ServiceWorker registration successful with scope: ', registration.scope);
             })
