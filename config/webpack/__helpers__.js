@@ -12,6 +12,7 @@ function getServer(openPage, PROXY_HOST, PORT) {
     },
     open: [openPage],
     port,
+    https: true,
   };
   if (PROXY_HOST) {
     // proxy 服务

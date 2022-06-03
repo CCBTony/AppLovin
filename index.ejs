@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
     <title><%= title %></title>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker
+            .register('/serviceWorker.js', { scope: '/' })
+            .then(function (registration) {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
 </head>
 <body>
 <div id="app"></div>

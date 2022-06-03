@@ -1,6 +1,32 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
+
+class FileListPlugin {
+  constructor() {}
+  apply(compiler) {
+    compiler.hooks.emit.tap('FileListPlugin', (compilation) => {
+      let assets = compilation.assets;
+      const files = [];
+      Object.entries(assets).forEach(([filename]) => {
+        if (filename.includes('serviceWorker')) return;
+        files.push(filename);
+      });
+      const serviceWorkerContent = compilation.assets['serviceWorker.js']._value
+        .toString()
+        .replace(`var files = [];`, `var files = ${JSON.stringify(files)};`);
+      compilation.assets['serviceWorker.js'] = {
+        source() {
+          return serviceWorkerContent;
+        },
+        size() {
+          return serviceWorkerContent.length;
+        },
+      };
+    });
+  }
+}
 
 module.exports = {
   module: {
@@ -48,6 +74,10 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new webpack.DefinePlugin({
       'process.env.API_BACK': JSON.stringify(process.env.API_BACK || ''),
+    }),
+    new FileListPlugin(),
+    new CopyPlugin({
+      patterns: [{ from: path.resolve(__dirname, '../../assets/js'), to: path.resolve(__dirname, '../../dist') }],
     }),
   ],
 };
