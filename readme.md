@@ -13,18 +13,14 @@ UI构建库：react
 ```
 
 # 构建指令
-## 安装依赖
+### 安装依赖
 `npm i`
 
-## 启动本地开发环境
+### 启动本地开发环境
 `npm run start:dev`
 
-## 打包生产环境静态资源
+### 打包生产环境静态资源
 `npm run build`
-
-为了方便起见，日常开发时应开启保存时触发自动格式化的能力。
-`pycharm`用户请下载`prettier`插件，并勾选相应选项。
-`vscode`用户参见[《eslint + prettier + vscode 配置实现保存自动格式化》](https://juejin.cn/post/6844904194336358407) 。
 
 
 # 重要目录结构
@@ -55,23 +51,25 @@ index.ejs: index.html 模板
 # 切换 白天/夜晚 主题
 有两种方式切换主题
 
-## 自动切换
+### 自动切换
 目前设定 6:00 ~ 18:00 为"白天"，否则为"夜晚"
 
-## 手动切换
+### 手动切换
 在url里添加查询参数手动切换主题，`theme=day`为"白天"，`theme=night`为夜晚
 
 # 前端工程化
-## 自动代码格式化
+### 自动代码格式化
 使用`prettier`对源码进行格式化，统一基本编码风格。
 
 使用`npm run prettier`命令进行格式化。
 
 部署了`husky`后，在`git commit`前会强制进行代码格式化。
 
-主流开发工具基本都会提供`prettier`插件，以实现保存时自动格式化，提升开发体验。
+为了方便起见，日常开发时应开启保存时触发自动格式化的能力。
+`pycharm`用户请下载`prettier`插件，并勾选相应选项。
+`vscode`用户参见[《eslint + prettier + vscode 配置实现保存自动格式化》](https://juejin.cn/post/6844904194336358407) 。
 
-## 代码静态检查
+### 代码静态检查
 使用`tsc` 和 `eslint` 对`js/ts/tsx` 进行静态分析检查，避免低级错误。
 
 使用`npm run tsc`进行`typescript`编译器检查。
@@ -80,7 +78,7 @@ index.ejs: index.html 模板
 
 部署了`husky`后，在`git push`前会强制进行`tsc` & `eslint`检查，出错则无法`push`。
 
-## 前端组件管理
+### 前端组件管理
 使用`storybook`对前端组件进行开发 & 管理。
 
 使用`npm run storybook`开启本地开发服务器。
