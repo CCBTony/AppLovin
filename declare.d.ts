@@ -1,3 +1,5 @@
+declare module 'd3-shape';
+
 declare module '*.svg' {
   const value: never;
   export default value;
