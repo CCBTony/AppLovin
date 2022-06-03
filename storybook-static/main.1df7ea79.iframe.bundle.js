@@ -1,4 +1,4 @@
-/*! For license information please see main.849d4103.iframe.bundle.js.LICENSE.txt */
+/*! For license information please see main.1df7ea79.iframe.bundle.js.LICENSE.txt */
 (self.webpackChunkapp_lovin = self.webpackChunkapp_lovin || []).push([
   [179],
   {
@@ -361,7 +361,15 @@
         classnames = __webpack_require__('./node_modules/classnames/index.js'),
         classnames_default = __webpack_require__.n(classnames),
         mobx_esm =
-          (__webpack_require__('./node_modules/core-js/modules/es.object.define-property.js'),
+          (__webpack_require__('./node_modules/core-js/modules/es.array.includes.js'),
+          __webpack_require__('./node_modules/core-js/modules/es.string.includes.js'),
+          __webpack_require__('./node_modules/core-js/modules/es.date.to-string.js'),
+          __webpack_require__('./node_modules/core-js/modules/es.promise.js'),
+          __webpack_require__('./node_modules/core-js/modules/es.object.to-string.js'),
+          __webpack_require__('./node_modules/core-js/modules/es.string.iterator.js'),
+          __webpack_require__('./node_modules/core-js/modules/es.array.iterator.js'),
+          __webpack_require__('./node_modules/core-js/modules/web.dom-collections.iterator.js'),
+          __webpack_require__('./node_modules/core-js/modules/es.object.define-property.js'),
           __webpack_require__('./node_modules/core-js/modules/es.array.is-array.js'),
           __webpack_require__('./node_modules/core-js/modules/es.symbol.js'),
           __webpack_require__('./node_modules/core-js/modules/es.symbol.description.js'),
@@ -378,16 +386,7 @@
           __webpack_require__('./node_modules/core-js/modules/web.dom-collections.for-each.js'),
           __webpack_require__('./node_modules/core-js/modules/es.object.set-prototype-of.js'),
           __webpack_require__('./node_modules/core-js/modules/es.array.reverse.js'),
-          __webpack_require__('./node_modules/core-js/modules/es.array.includes.js'),
-          __webpack_require__('./node_modules/core-js/modules/es.string.includes.js'),
-          __webpack_require__('./node_modules/core-js/modules/es.date.to-string.js'),
-          __webpack_require__('./node_modules/core-js/modules/es.promise.js'),
-          __webpack_require__('./node_modules/core-js/modules/es.object.to-string.js'),
-          __webpack_require__('./node_modules/core-js/modules/es.string.iterator.js'),
-          __webpack_require__('./node_modules/core-js/modules/es.array.iterator.js'),
-          __webpack_require__('./node_modules/core-js/modules/web.dom-collections.iterator.js'),
-          __webpack_require__('./node_modules/mobx/dist/mobx.esm.js')),
-        injectable = __webpack_require__('./node_modules/inversify/es/annotation/injectable.js');
+          __webpack_require__('./node_modules/mobx/dist/mobx.esm.js'));
       !(function (AppStatus) {
         (AppStatus[(AppStatus.Init = 0)] = 'Init'), (AppStatus[(AppStatus.Done = 1)] = 'Done');
       })(AppStatus || (AppStatus = {}));
@@ -793,8 +792,7 @@
           });
         };
       }
-      var _class,
-        services_axios = __webpack_require__.n(axios)().create(),
+      var services_axios = __webpack_require__.n(axios)().create(),
         API_KEY = 'fd1bafe058dd4392a680883bcd1290ee',
         getRealtimeWeather = (function () {
           var _ref = _asyncToGenerator(
@@ -1323,105 +1321,103 @@
         }
       }
       var _templateObject,
-        appModel = new ((0, injectable.b)()(
-          (_class = (function () {
-            function AppModel() {
-              var _getThemeFromUrl;
-              !(function _classCallCheck(instance, Constructor) {
-                if (!(instance instanceof Constructor)) throw new TypeError('Cannot call a class as a function');
-              })(this, AppModel),
-                (this.status = AppStatus.Init),
-                (this.theme =
-                  null !==
-                    (_getThemeFromUrl = (function getThemeFromUrl() {
-                      var url = location.href.toLowerCase();
-                      return url.includes('theme=day') ? 'day' : url.includes('theme=night') ? 'night' : void 0;
-                    })()) && void 0 !== _getThemeFromUrl
-                    ? _getThemeFromUrl
-                    : new Date().getHours() > 6 && new Date().getHours() < 18
-                    ? 'day'
-                    : 'night'),
-                (this.todayWeather = null),
-                (this.next7DayWeather = null),
-                (this.next24hoursWeather = null),
-                (0, mobx_esm.ky)(this);
-            }
-            var _init;
-            return (
-              (function _createClass(Constructor, protoProps, staticProps) {
-                return (
-                  protoProps && _defineProperties(Constructor.prototype, protoProps),
-                  staticProps && _defineProperties(Constructor, staticProps),
-                  Object.defineProperty(Constructor, 'prototype', { writable: !1 }),
-                  Constructor
-                );
-              })(AppModel, [
-                {
-                  key: 'init',
-                  value:
-                    ((_init = (function AppModel_asyncToGenerator(fn) {
-                      return function () {
-                        var self = this,
-                          args = arguments;
-                        return new Promise(function (resolve, reject) {
-                          var gen = fn.apply(self, args);
-                          function _next(value) {
-                            AppModel_asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'next', value);
+        appModel = new ((function () {
+          function AppModel() {
+            var _getThemeFromUrl;
+            !(function _classCallCheck(instance, Constructor) {
+              if (!(instance instanceof Constructor)) throw new TypeError('Cannot call a class as a function');
+            })(this, AppModel),
+              (this.status = AppStatus.Init),
+              (this.theme =
+                null !==
+                  (_getThemeFromUrl = (function getThemeFromUrl() {
+                    var url = location.href.toLowerCase();
+                    return url.includes('theme=day') ? 'day' : url.includes('theme=night') ? 'night' : void 0;
+                  })()) && void 0 !== _getThemeFromUrl
+                  ? _getThemeFromUrl
+                  : new Date().getHours() > 6 && new Date().getHours() < 18
+                  ? 'day'
+                  : 'night'),
+              (this.todayWeather = null),
+              (this.next7DayWeather = null),
+              (this.next24hoursWeather = null),
+              (0, mobx_esm.ky)(this);
+          }
+          var _init;
+          return (
+            (function _createClass(Constructor, protoProps, staticProps) {
+              return (
+                protoProps && _defineProperties(Constructor.prototype, protoProps),
+                staticProps && _defineProperties(Constructor, staticProps),
+                Object.defineProperty(Constructor, 'prototype', { writable: !1 }),
+                Constructor
+              );
+            })(AppModel, [
+              {
+                key: 'init',
+                value:
+                  ((_init = (function AppModel_asyncToGenerator(fn) {
+                    return function () {
+                      var self = this,
+                        args = arguments;
+                      return new Promise(function (resolve, reject) {
+                        var gen = fn.apply(self, args);
+                        function _next(value) {
+                          AppModel_asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'next', value);
+                        }
+                        function _throw(err) {
+                          AppModel_asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'throw', err);
+                        }
+                        _next(void 0);
+                      });
+                    };
+                  })(
+                    AppModel_regeneratorRuntime().mark(function _callee() {
+                      var _yield$Promise$all,
+                        _yield$Promise$all2,
+                        now,
+                        hourly,
+                        daily,
+                        _this = this;
+                      return AppModel_regeneratorRuntime().wrap(function _callee$(_context) {
+                        for (;;)
+                          switch ((_context.prev = _context.next)) {
+                            case 0:
+                              return (
+                                (_context.next = 2),
+                                Promise.all([
+                                  getRealtimeWeather(),
+                                  get24HourPredicationWeather(),
+                                  get7DayPredicationWeather(),
+                                ])
+                              );
+                            case 2:
+                              (_yield$Promise$all = _context.sent),
+                                (_yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 3)),
+                                (now = _yield$Promise$all2[0].now),
+                                (hourly = _yield$Promise$all2[1].hourly),
+                                (daily = _yield$Promise$all2[2].daily),
+                                (0, mobx_esm.z)(function () {
+                                  (_this.todayWeather = now),
+                                    (_this.next7DayWeather = daily),
+                                    (_this.next24hoursWeather = hourly),
+                                    (_this.status = AppStatus.Done);
+                                });
+                            case 8:
+                            case 'end':
+                              return _context.stop();
                           }
-                          function _throw(err) {
-                            AppModel_asyncGeneratorStep(gen, resolve, reject, _next, _throw, 'throw', err);
-                          }
-                          _next(void 0);
-                        });
-                      };
-                    })(
-                      AppModel_regeneratorRuntime().mark(function _callee() {
-                        var _yield$Promise$all,
-                          _yield$Promise$all2,
-                          now,
-                          hourly,
-                          daily,
-                          _this = this;
-                        return AppModel_regeneratorRuntime().wrap(function _callee$(_context) {
-                          for (;;)
-                            switch ((_context.prev = _context.next)) {
-                              case 0:
-                                return (
-                                  (_context.next = 2),
-                                  Promise.all([
-                                    getRealtimeWeather(),
-                                    get24HourPredicationWeather(),
-                                    get7DayPredicationWeather(),
-                                  ])
-                                );
-                              case 2:
-                                (_yield$Promise$all = _context.sent),
-                                  (_yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 3)),
-                                  (now = _yield$Promise$all2[0].now),
-                                  (hourly = _yield$Promise$all2[1].hourly),
-                                  (daily = _yield$Promise$all2[2].daily),
-                                  (0, mobx_esm.z)(function () {
-                                    (_this.todayWeather = now),
-                                      (_this.next7DayWeather = daily),
-                                      (_this.next24hoursWeather = hourly),
-                                      (_this.status = AppStatus.Done);
-                                  });
-                              case 8:
-                              case 'end':
-                                return _context.stop();
-                            }
-                        }, _callee);
-                      }),
-                    )),
-                    function init() {
-                      return _init.apply(this, arguments);
+                      }, _callee);
                     }),
-                },
-              ]),
-              AppModel
-            );
-          })()),
-        ) || _class)(),
+                  )),
+                  function init() {
+                    return _init.apply(this, arguments);
+                  }),
+              },
+            ]),
+            AppModel
+          );
+        })())(),
         jsx_runtime = __webpack_require__('./node_modules/react/jsx-runtime.js');
       var Wrapper = styled_components_browser_esm.ZP.div(function (props) {
         var _img$default,
@@ -1682,7 +1678,7 @@
     var __webpack_exec__ = (moduleId) => __webpack_require__((__webpack_require__.s = moduleId));
     __webpack_require__.O(
       0,
-      [13],
+      [835],
       () => (
         __webpack_exec__('./node_modules/@storybook/core-client/dist/esm/globals/polyfills.js'),
         __webpack_exec__('./node_modules/@storybook/core-client/dist/esm/globals/globals.js'),

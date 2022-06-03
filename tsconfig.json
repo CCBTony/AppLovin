@@ -16,8 +16,7 @@
     },
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "types": ["reflect-metadata"]
+    "experimentalDecorators": true
   },
   "exclude": ["./node_modules", "**/*.spec.ts", "./config", "./src/stories"]
 }

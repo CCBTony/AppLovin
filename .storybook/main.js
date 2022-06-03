@@ -13,7 +13,6 @@ module.exports = {
       '@': path.resolve(__dirname, '../src'),
       '@assets': path.resolve(__dirname, '../assets'),
     };
-    console.log('error:', config.resolve.alias);
 
     return config;
   },

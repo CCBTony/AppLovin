@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter, Routes, Route } from 'react-router-dom';

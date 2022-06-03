@@ -1,6 +1,6 @@
-/*! For license information please see 13.b9df178f.iframe.bundle.js.LICENSE.txt */
+/*! For license information please see 835.fe757add.iframe.bundle.js.LICENSE.txt */
 (self.webpackChunkapp_lovin = self.webpackChunkapp_lovin || []).push([
-  [13],
+  [835],
   {
     './node_modules/@base2/pretty-print-object/dist/index.js': function (__unused_webpack_module, exports) {
       'use strict';
@@ -39891,22 +39891,6 @@
           },
         };
       Object.freeze && Object.freeze(SLOT), (module.exports = SLOT);
-    },
-    './node_modules/inversify/es/annotation/injectable.js': (
-      __unused_webpack_module,
-      __webpack_exports__,
-      __webpack_require__,
-    ) => {
-      'use strict';
-      __webpack_require__.d(__webpack_exports__, { b: () => injectable });
-      function injectable() {
-        return function (target) {
-          if (Reflect.hasOwnMetadata('inversify:paramtypes', target))
-            throw new Error('Cannot apply @injectable decorator multiple times.');
-          var types = Reflect.getMetadata('design:paramtypes', target) || [];
-          return Reflect.defineMetadata('inversify:paramtypes', types, target), target;
-        };
-      }
     },
     './node_modules/is-arguments/index.js': (module, __unused_webpack_exports, __webpack_require__) => {
       'use strict';
