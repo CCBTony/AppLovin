@@ -52,6 +52,15 @@ index.ejs: index.html 模板
 # 离线使用App
 通过`service worker`实现离线使用能力，具体逻辑见`assets/js/serviceWorker.js`。
 
+# 切换 白天/夜晚 主题
+有两种方式切换主题
+
+## 自动切换
+目前设定 6:00 ~ 18:00 为"白天"，否则为"夜晚"
+
+## 手动切换
+在url里添加查询参数手动切换主题，`theme=day`为"白天"，`theme=night`为夜晚
+
 # 前端工程化
 ## 自动代码格式化
 使用`prettier`对源码进行格式化，统一基本编码风格。
