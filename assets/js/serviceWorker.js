@@ -1,7 +1,7 @@
 /**
  * 此行禁止修改，由webpack注入生成的文件列表
  */
-var files = [];
+var files = [123];
 
 var cacheName = 'gzj-applovin';
 

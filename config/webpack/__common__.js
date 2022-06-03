@@ -15,7 +15,7 @@ class FileListPlugin {
       });
       const serviceWorkerContent = compilation.assets['serviceWorker.js']._value
         .toString()
-        .replace(`var files = [];`, `var files = ${JSON.stringify(files)};`);
+        .replace(`[123]`, JSON.stringify(files));
       compilation.assets['serviceWorker.js'] = {
         source() {
           return serviceWorkerContent;
